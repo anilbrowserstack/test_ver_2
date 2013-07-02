@@ -18,4 +18,11 @@ class AttachmentsController < ApplicationController
             render :action => "new"
         end
     end
+    def index
+    	Attachment.all.each do |row|
+    		@filename = row.filename
+    		@link = "localhost:3000/attachments/show/"+row.id.to_s
+    	end
+    end
+
 end
