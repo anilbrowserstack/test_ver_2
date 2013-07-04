@@ -1,26 +1,21 @@
 TestVer2::Application.routes.draw do
 
-  resources :sessions, :only => [:new, :create, :destroy]
-  resources :users
-  #resources :pages
+  resources :sessions, :only => [:new, :create, :destroy] do
 
-  #match '/', :to => 'pages#new'  
-  
-  #match '/signup',  :to => 'users#new'
-  
-  #match '/signin',  :to => 'sessions#new'
+  end
+  resources :users
 
   get 'signup', :to => 'users#new'
   get 'signin', :to => 'sessions#new'
-  get 'signout', :to => 'sessions#destroy'
   #match '/signout', :to => 'sessions#destroy'
-
 
   get "attachments/show"
 
   #get "attachments/create"
 
-
+  #match '/signup',  :to => 'users#new'
+  
+  #match '/signin',  :to => 'sessions#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
