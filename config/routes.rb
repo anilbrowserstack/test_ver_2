@@ -1,7 +1,26 @@
 TestVer2::Application.routes.draw do
+
+  resources :sessions, :only => [:new, :create, :destroy]
+  resources :users
+  #resources :pages
+
+  #match '/', :to => 'pages#new'  
+  
+  #match '/signup',  :to => 'users#new'
+  
+  #match '/signin',  :to => 'sessions#new'
+
+  get 'signup', :to => 'users#new'
+  get 'signin', :to => 'sessions#new'
+  get 'signout', :to => 'sessions#destroy'
+  #match '/signout', :to => 'sessions#destroy'
+
+
   get "attachments/show"
 
-  get "attachments/create"
+  #get "attachments/create"
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -52,7 +71,8 @@ TestVer2::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'pages#new'
+  #root :to => redirect("/pages/new")
 
   # See how all your routes lay out with "rake routes"
 

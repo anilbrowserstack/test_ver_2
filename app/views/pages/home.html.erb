@@ -1,0 +1,32 @@
+<h1>Pages#home</h1>
+
+<!DOCTYPE html>
+<html>
+  <head>
+<title> TITLE </title>
+<%= csrf_meta_tag %>
+  </head>
+  <body>
+<div class="container"> 
+<header>
+<nav class="round">
+<ul>
+<li><%= link_to "Home", '#' %></li> 
+<li><%= link_to "Help", '#' %></li> 
+<li><%= link_to "Sign in", signin_path %></li>
+</ul> 
+</nav>
+</header>
+<section class="round">
+<%= yield %> 
+</section>
+    </div>
+<h1>Sample App</h1>
+<p>
+This is the home page for the
+<a href="http://railstutorial.org/">Ruby on Rails Tutorial</a> sample application.
+</p>
+<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+  </body>
+</html>
+

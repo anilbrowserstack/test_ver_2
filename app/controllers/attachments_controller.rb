@@ -1,10 +1,19 @@
 class AttachmentsController < ApplicationController
+  include SessionsHelper
   def show
+        if !signed_in?    
+            redirect_to "/pages/new"
+            return
+        end
         @attachment = Attachment.find(params[:id])
         send_data @attachment.data, :filename => @attachment.filename, :type => @attachment.content_type
     end
 
-    def create      
+    def create 
+        if !signed_in?    
+            redirect_to "/pages/new"
+            return
+        end
         return if params[:attachment].blank?
 
         @attachment = Attachment.new
@@ -19,6 +28,10 @@ class AttachmentsController < ApplicationController
         end
     end
     def index
+        if !signed_in?    
+            redirect_to "/pages/new"
+            return
+        end
     	Attachment.all.each do |row|
     		@filename = row.filename
     		@link = "localhost:3000/attachments/show/"+row.id.to_s
